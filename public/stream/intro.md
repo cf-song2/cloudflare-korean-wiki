@@ -7,7 +7,7 @@
 
 | 기능  | 동작 | 참조  |
 |------|----|------|
-| 홍길동 | 30 | 개발자 |
+| 기본 업로드 기능 | 1. 대시보드를 통한 업로드 (드래그 & 드롭, 파일 선택) <br>2. Stream API를 이용한 업로드 | 1. https://developers.cloudflare.com/stream/uploading-videos/upload-video-file/ |
 | 김철수 | 28 | 디자이너 |
 
 

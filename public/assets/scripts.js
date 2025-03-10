@@ -3,11 +3,11 @@ const md = window.markdownit({
     linkify: true,
     typographer: true,
     breaks: true
-}).use(markdownitEmoji)
-  .use(markdownitSub)
-  .use(markdownitSup)
-  .use(markdownitFootnote)
-  .use(markdownitTable)
+})
+.use(window.markdownitEmoji)   
+.use(window.markdownitSub)     
+.use(window.markdownitSup)     
+.use(window.markdownitFootnote);
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);
@@ -24,7 +24,10 @@ function toggleSubmenu(id) {
 
 function loadMarkdown(file) {
     fetch(file)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error("HTTP Error " + response.status);
+            return response.text();
+        })
         .then(markdown => {
             document.getElementById("content").innerHTML = md.render(markdown);
         })
