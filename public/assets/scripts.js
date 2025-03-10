@@ -3,7 +3,7 @@ const md = window.markdownit({
     linkify: true,
     typographer: true,
     breaks: true
-}).use(window.markdownitTableOfContents)
+}).use(window.markdownItTocDoneRight)
 .use(window.markdownitEmoji)   
 .use(window.markdownitSub)     
 .use(window.markdownitSup)     
