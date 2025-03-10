@@ -1,4 +1,9 @@
-[[TOC]]
+[Stream](#stream) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[비디오 업로드](#비디오-업로드) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[라이브 비디오 스트리밍](#라이브-비디오-스트리밍) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[How stream works?](#how-stream-works) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[비디오 재생 (VOD)](#비디오-재생-vod) <br>
+
 
 # Stream
 - 서버리스 라이브 및 VOD 스트리밍을 위한 제품입니다.
@@ -30,8 +35,6 @@
      - 웹사이트에서 Cloudflare Stream player 또는 HLS/DAS를 지원하는 다른 비디오 플레이어를 사용하여 라이브 영상을 재생
 
 ![How live stream works](../assets/img/how_cloudflare_live_stream_works.png)
-
-### 기능
 
 | 기능  | 동작 |
 |------|----|
