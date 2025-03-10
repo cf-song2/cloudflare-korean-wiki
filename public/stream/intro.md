@@ -1,3 +1,5 @@
+[[TOC]]
+
 # Stream
 - 서버리스 라이브 및 VOD 스트리밍을 위한 제품입니다.
 - Cloudflare의 스트림을 통해 비디오를 위한 인프라를 구성하거나 유지보수 할 필요 없이 하나의 API를 통해 라이브 및 VOD를 업로드, 저장, 인코딩 및 전송할 수 있습니다.
@@ -21,11 +23,11 @@
 ### How stream works?
 - 원본 설명은 [여기](https://developers.cloudflare.com/stream/stream-live/)를 참조하세요.
 
-1. 각 라이브 스트림은 각 Live Input을 생성해야 하며, 이는 대시보드 또는 API를 통해 사용할 수 있다.
-2. Live Input은 고유한 Stream Key를 가지며, 동영상 크리에이터에게 이 Stream Key를 제공하여야 한다.
-3. 크리에이터는 RTMPS 또는 SRT 프로토콜을 통해 Cloudflare Stream으로 라이브 영상을 전송한다.
-4. Cloudflare의 Stream이 라이브 비디오를 여러 해당도로 인코딩하고, CF의 글로벌 네트워크를 통해 시청자에게 전달한다.
-     - 웹사이트에서 Cloudflare Stream player 또는 HLS/DAS를 지원하는 다른 비디오 플레이어를 사용하여 라이브 영상을 재생할 수 있다.
+1. 각 라이브 스트림은 Live Input을 생성 (대시보드 또는 API를 통해 생성 가능)
+2. Live Input은 고유한 Stream Key를 가지며, 동영상 크리에이터에게 이 Stream Key를 제공
+3. 크리에이터는 RTMPS 또는 SRT 프로토콜을 통해 Cloudflare Stream으로 라이브 영상을 전송
+4. Cloudflare의 Stream이 라이브 비디오를 여러 해당도로 인코딩하고, CF의 글로벌 네트워크를 통해 시청자에게 전달
+     - 웹사이트에서 Cloudflare Stream player 또는 HLS/DAS를 지원하는 다른 비디오 플레이어를 사용하여 라이브 영상을 재생
 
 ![How live stream works](../assets/img/how_cloudflare_live_stream_works.png)
 
@@ -41,6 +43,14 @@
 <br>
 
 ## 비디오 재생 (VOD)
+
+| 기능  | 동작 |
+|------|----|
+|   |  |
+|   |  |
+|   |  |
+|   |  |
+|   |  |
 
 <br>
 
