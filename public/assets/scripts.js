@@ -1,4 +1,13 @@
-const md = window.markdownit();
+const md = window.markdownit({
+    html: true,
+    linkify: true,
+    typographer: true,
+    breaks: true
+}).use(markdownitEmoji)
+  .use(markdownitSub)
+  .use(markdownitSup)
+  .use(markdownitFootnote)
+  .use(markdownitTable)
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);
