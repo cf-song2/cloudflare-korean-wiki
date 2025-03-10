@@ -11,7 +11,7 @@ body {
     height: 100vh;
     overflow-y: auto;
     font-size: 18px;
-    border-right: 4px solid #F0A04B;
+    border-right: 1.5px solid #F0A04B;
 }
 
 .menu-item {
