@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare Wiki</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+</head>
+<body>
+
+    <div id="sidebar">
+        <div class="menu-item" onclick="toggleMenu('developer-platform')">Developer Platform</div>
+        <div id="developer-platform" class="submenu">
+            <div class="submenu-item" onclick="toggleSubmenu('stream')">Stream</div>
+            <div id="stream" class="submenu">
+                <div class="submenu-item" onclick="loadMarkdown('stream/intro.md')">제품 소개</div>
+                <!-- <div class="submenu-item" onclick="loadMarkdown('stream/demo.md')">데모 페이지</div>
+                <div class="submenu-item" onclick="loadMarkdown('stream/concept.md')">개념 정리</div> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <h2>Cloudflare 소개 페이지에 오신 것을 환영합니다!</h2>
+    </div>
+
+    <script src="assets/scripts.js"></script>
+
+</body>
+</html>
