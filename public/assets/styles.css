@@ -6,10 +6,12 @@ body {
 #sidebar {
     width: 250px;
     background: #f4f4f4;
-    padding: 15px;
+    padding: 20px;
     height: 100vh;
     overflow-y: auto;
+    font-size: 18px;
 }
+
 #content {
     flex-grow: 1;
     padding: 20px;
@@ -17,7 +19,8 @@ body {
 .menu-item {
     cursor: pointer;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 .submenu {
     display: none;
@@ -25,7 +28,16 @@ body {
 }
 .submenu-item {
     cursor: pointer;
-    color: #007bff;
-    text-decoration: underline;
-    margin-bottom: 3px;
+    color: #333;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.submenu-item:hover {
+    background-color: #f1f1f1;
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
 }
