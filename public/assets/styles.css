@@ -132,3 +132,15 @@ td {
         border-bottom: 4px solid #F0A04B;
     }
 }
+
+.wiki-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    color: #007bff;
+}
+.wiki-title:hover {
+    color: #0056b3;
+}
