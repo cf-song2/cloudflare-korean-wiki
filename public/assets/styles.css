@@ -12,7 +12,10 @@ body {
     height: 100vh;
     overflow-y: auto;
     font-size: 18px;
+    position: fixed;
     border-right: 1.5px solid #F0A04B;
+    top: 0;
+    left: 0;
 }
 
 .menu-item {

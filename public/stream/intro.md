@@ -53,7 +53,7 @@
 
 | 기능  | 동작 |
 |------|----|
-|   |  |
+| [자체 플레이어 사용](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)  | - Stream은 HLS 및 DASH를 지원하는 모든 비디오 플레이어와 호환된다. <br>- 이 두 프로토콜은 스트리밍 미디어의 표준 형식으로 웹 브라우저, 모바일 운영 체제 및 미디어 스트리밍 장치 전반에서 지원된다.|
 |   |  |
 |   |  |
 |   |  |
