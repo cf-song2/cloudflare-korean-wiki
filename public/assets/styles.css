@@ -56,7 +56,9 @@ body {
 #content {
     flex-grow: 1;
     padding: 30px;
-    margin-left: 20px;
+    margin-left: 270px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #content img {
