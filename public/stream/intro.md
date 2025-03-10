@@ -18,14 +18,29 @@
 
 ## 라이브 비디오 스트리밍
 
+### How stream works?
+- 원본 설명은 [여기](https://developers.cloudflare.com/stream/stream-live/)를 참조하세요.
+
+1. 각 라이브 스트림은 각 Live Input을 생성해야 하며, 이는 대시보드 또는 API를 통해 사용할 수 있다.
+2. Live Input은 고유한 Stream Key를 가지며, 동영상 크리에이터에게 이 Stream Key를 제공하여야 한다.
+3. 크리에이터는 RTMPS 또는 SRT 프로토콜을 통해 Cloudflare Stream으로 라이브 영상을 전송한다.
+4. Cloudflare의 Stream이 라이브 비디오를 여러 해당도로 인코딩하고, CF의 글로벌 네트워크를 통해 시청자에게 전달한다.
+     - 웹사이트에서 Cloudflare Stream player 또는 HLS/DAS를 지원하는 다른 비디오 플레이어를 사용하여 라이브 영상을 재생할 수 있다.
+
+![How live stream works](../assets/img/how_cloudflare_live_stream_works.png)
+
+### 기능
+
 | 기능  | 동작 |
 |------|----|
-| 기능  | 동작 |
+| RTMP 재연결  | - 라이브 스트리밍 소프트웨어가 자동 재연결을 제공하면, Cloudflare Stream Live는 계속 스트림을 수신 (Ingest), 방송 가능 <br>- 사용하는 각 소프트웨어에 대해 RTMP 피드 전송이 끊어졌을 때 자동 재연결 설정이 필요 <br>- OBS 같은 일부 앱은 자동 제공이나, FFmpeg 등의 프로그램을 별도 설정 필요 |
+| ABR (Adaptive Bitrate Streaming)  | - Cloudflare Stream은 사용자의 라이브 스트림 비트레이트를 분석하여 이러한 대역폭 예측 값을 동적으로 생성하고 업데이트한다. |
+| 라이브 스트리밍 -> 녹화 전환  | - 라이브 스트리밍 종료 후 60초 이내 Recording 제공한다. <br>- 라이브 스트림 종료 후 ready가 되면 녹화본을 사용 가능, 재생 URL을 사용하면 된다. |
 
 
 <br>
 
-## 비디오 재생
+## 비디오 재생 (VOD)
 
 <br>
 
