@@ -1,0 +1,9 @@
+{
+    "name": "cloudflare-wiki",
+    "version": "1.0.0",
+    "description": "Cloudflare Pages Markdown Site",
+    "scripts": {},
+    "dependencies": {},
+    "devDependencies": {}
+  }
+  
