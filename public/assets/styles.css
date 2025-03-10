@@ -6,11 +6,12 @@ body {
 
 #sidebar {
     width: 250px;
-    background: #f4f4f4;
+    background: #ffffff;
     padding: 20px;
     height: 100vh;
     overflow-y: auto;
     font-size: 18px;
+    border-right: 4px solid #F0A04B;
 }
 
 .menu-item {
@@ -35,7 +36,7 @@ body {
 }
 
 .submenu-item:hover {
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -52,6 +53,20 @@ body {
     flex-grow: 1;
     padding: 30px;
     margin-left: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 table {
@@ -71,6 +86,23 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #F0A04B;
+    color: white;
     font-weight: bold;
+}
+
+td {
+    background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    #sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 4px solid #F0A04B;
+    }
 }
