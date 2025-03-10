@@ -15,21 +15,20 @@
 <body>
 
     <div id="sidebar">
+        <div class="wiki-title" onclick="goHome()">Cloudflare Wiki</div>
+
         <div class="menu-item" onclick="toggleMenu('developer-platform')">Developer Platform</div>
         <div class="submenu">
             <div class="submenu-item has-submenu" onclick="toggleSubmenu('stream')">
                 Stream <span class="arrow">></span>
             </div>
             <div id="stream" class="nested-submenu"> 
-                <div class="submenu-item" onclick="loadMarkdown('stream/intro.md')">제품 소개</div>
+                <div class="submenu-item" onclick="loadMarkdown('stream/intro.md', 'Stream - 제품 소개', '/stream/intro')">제품 소개</div>
             </div>
 
             <div class="submenu-item has-submenu" onclick="toggleSubmenu('images')">
                 Images <span class="arrow">></span>
             </div>
-            <!-- <div id="images" class="nested-submenu">
-                <div class="submenu-item" onclick="loadMarkdown('images/intro.md')">제품 소개</div>
-            </div> -->
         </div>
     </div>
 

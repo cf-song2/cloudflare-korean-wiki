@@ -22,17 +22,23 @@ function toggleSubmenu(id) {
     }
 }
 
-function loadMarkdown(file) {
+function loadMarkdown(file, title, url) {
     fetch(file)
-        .then(response => {
-            if (!response.ok) throw new Error("HTTP Error " + response.status);
-            return response.text();
-        })
+        .then(response => response.text())
         .then(markdown => {
             document.getElementById("content").innerHTML = md.render(markdown);
+
+            window.history.pushState({ path: url }, title, url);
+            document.title = title;
         })
         .catch(error => {
             document.getElementById("content").innerHTML = "<p>페이지를 불러오는 데 실패했습니다.</p>";
             console.error("Error loading markdown:", error);
         });
 }
+
+window.addEventListener("popstate", function (event) {
+    if (event.state) {
+        loadMarkdown(event.state.path, document.title, event.state.path);
+    }
+});
