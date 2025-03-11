@@ -48,7 +48,7 @@ function loadPageFromURL() {
     if (path === "/") {
         goHome();
     } else if (path.startsWith("/stream/")) {
-        let file = `.${path}.md`;
+        let file = `stream${path.replace("/stream", "")}.md`;
         loadMarkdown(file, "Stream - Cloudflare Wiki", path);
     }
 }
