@@ -27,3 +27,11 @@
   + Cloudflare에 대한 권한 쿼리를 증가시켜, 사용량 기반 청구를 사용하는 고객에게 추가 비용이 발생할 수 있습니다.
   + Session Affinity를 지원하지 않습니다.
 
+
+## L4 LB
+- L4 LB는 Spectrum의 일부로만 지원됩니다.
+- Spectrum은 TCP 수준에서 동작하므로 아래 기능은 지원되지 않습니다.
+  
+  + Session Affinity
+  + Custom Rules
+  + Caching
