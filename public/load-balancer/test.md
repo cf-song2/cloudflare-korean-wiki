@@ -40,7 +40,7 @@
 
 ![pool](../assets/img/pool.png)
 
-# Create LB
+# 3. Create LB
 - LB는 다음 설정을 포함합니다.
 
 | 기능  | 입력 데이터 |
