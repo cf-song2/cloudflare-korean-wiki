@@ -39,13 +39,10 @@ function loadMarkdown(file, title, url) {
         });
 }
 
-
 window.addEventListener("popstate", function (event) {
-    if (event.state && event.state.path) {
+    if (event.state && event.state.path !== "/") {  
         loadMarkdown(event.state.path, document.title, event.state.path);
-    } else {
-        goHome();
-    }
+    } 
 });
 
 function loadPageFromURL() {
@@ -59,10 +56,12 @@ function loadPageFromURL() {
     }
 }
 
-// function goHome() {
-//     window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
-//     document.title = "Cloudflare Wiki";
-//     window.location.href = "/";
-// }
+function goHome() {
+    if (window.location.pathname === "/") return;
+
+    window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
+    document.title = "Cloudflare Wiki";
+    window.location.href = "/";
+}
 
 document.addEventListener("DOMContentLoaded", loadPageFromURL);
