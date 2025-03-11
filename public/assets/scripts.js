@@ -59,10 +59,10 @@ function loadPageFromURL() {
     }
 }
 
-function goHome() {
-    window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
-    document.title = "Cloudflare Wiki";
-    window.location.href = "/";
-}
+// function goHome() {
+//     window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
+//     document.title = "Cloudflare Wiki";
+//     window.location.href = "/";
+// }
 
 document.addEventListener("DOMContentLoaded", loadPageFromURL);
