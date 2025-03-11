@@ -7,3 +7,5 @@
 - Cloudflare는 Authoritative NS 뿐만 아니라, 전세계 모든 클라이언트가 사용 가능한 퍼블릭 DNS 리졸버인 1.1.1.1을 운영하며, 해당 Performance는 아래와 같습니다.
 
 ![DNS resolver performance](../assets/img/dns_resolver.png)
+
+# 
