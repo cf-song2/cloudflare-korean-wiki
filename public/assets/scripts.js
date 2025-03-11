@@ -27,7 +27,6 @@ function loadMarkdown(file, title, url) {
         .then(response => response.text())
         .then(markdown => {
             document.getElementById("content").innerHTML = md.render(markdown);
-
             window.history.pushState({ path: url }, title, url);
             document.title = title;
         })
