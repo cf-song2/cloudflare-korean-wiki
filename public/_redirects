@@ -1,3 +1,4 @@
 /assets/*  /assets/:splat  200
-/stream/*  /index.html     200
-/*         /index.html     200
+/stream/assets/*  /assets/:splat  200
+/stream/*  /index.html  200
+/*  /index.html  200
