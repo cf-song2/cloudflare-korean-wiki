@@ -58,10 +58,7 @@ function loadPageFromURL() {
 
 function goHome() {
     if (window.location.pathname === "/") return;
-
-    window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
-    document.title = "Cloudflare Wiki";
-    window.location.reload();
+    window.location.href = "/";
 
 }
 
