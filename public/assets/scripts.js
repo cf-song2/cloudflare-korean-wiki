@@ -23,7 +23,9 @@ function toggleSubmenu(id) {
 }
 
 function loadMarkdown(file, title, url) {
-    fetch(file)
+    let fullPath = `/${file}`.replace("//", "/");
+
+    fetch(fullPath)
         .then(response => {
             if (!response.ok) throw new Error("Markdown 파일을 찾을 수 없음");
             return response.text();
@@ -38,6 +40,7 @@ function loadMarkdown(file, title, url) {
             console.error("Error loading markdown:", error);
         });
 }
+
 
 window.addEventListener("popstate", function (event) {
     if (event.state && event.state.path !== "/") {  
