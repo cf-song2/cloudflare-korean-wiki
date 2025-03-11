@@ -60,13 +60,9 @@ function loadPageFromURL() {
 }
 
 function goHome() {
-    document.getElementById("content").innerHTML = `
-        <h2>Cloudflare 소개 페이지에 오신 것을 환영합니다!</h2>
-        <p>이 페이지는 현재 Cloudflare의 Pages로 서빙됩니다...</p>
-    `;
-
     window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
     document.title = "Cloudflare Wiki";
+    window.location.href = "/";
 }
 
 document.addEventListener("DOMContentLoaded", loadPageFromURL);
