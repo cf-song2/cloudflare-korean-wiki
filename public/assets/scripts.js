@@ -4,10 +4,10 @@ const md = window.markdownit({
     typographer: true,
     breaks: true
 })
-.use(window.markdownitEmoji)   
-.use(window.markdownitSub)     
-.use(window.markdownitSup)     
-.use(window.markdownitFootnote);
+.use(markdownitEmoji)   
+.use(markdownitSub)     
+.use(markdownitSup)     
+.use(markdownitFootnote);
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);
@@ -43,11 +43,25 @@ window.addEventListener("popstate", function (event) {
     }
 });
 
+function loadPageFromURL() {
+    let path = window.location.pathname;
+    
+    if (path === "/") {
+        goHome();
+    } else if (path.startsWith("/stream/")) {
+        let file = `.${path}.md`;
+        loadMarkdown(file, "Stream - Cloudflare Wiki", path);
+    }
+}
+
 function goHome() {
     document.getElementById("content").innerHTML = `
         <h2>Cloudflare 소개 페이지에 오신 것을 환영합니다!</h2>
         <p>이 페이지는 현재 Cloudflare의 Pages로 서빙됩니다. 이 페이지에는 Cloudflare의 API를 사용해 다양한 제품의 데모를 선보일 예정입니다. 또한 Cloudflare의 개발자 플랫폼과 통합하여 full-stack application을 구축하도록 합니다.</p>
     `;
+
     window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
     document.title = "Cloudflare Wiki";
 }
+
+document.addEventListener("DOMContentLoaded", loadPageFromURL);
