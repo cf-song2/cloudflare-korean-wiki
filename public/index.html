@@ -31,6 +31,25 @@
             </div>
         </div>
 
+        <div class="menu-item" onclick="toggleMenu('application-performance')">Application Performance</div>
+        <div class="submenu">
+            <div class="submenu-item has-submenu" onclick="toggleSubmenu('dns')">
+                DNS <span class="arrow">></span>
+            </div>
+            <div id="dns" class="nested-submenu"> 
+                <div class="submenu-item" onclick="loadMarkdown('dns/intro.md', 'DNS - 제품 소개', '/dns/intro')">제품 소개</div>
+                <div class="submenu-item" onclick="loadMarkdown('dns/test.md', 'DNS - 테스트', '/dns/test')">테스트</div>
+            </div>
+
+            <div class="submenu-item has-submenu" onclick="toggleSubmenu('load-balancer')">
+                Load Balancer <span class="arrow">></span>
+            </div>
+            <div id="load-balancer" class="nested-submenu"> 
+                <div class="submenu-item" onclick="loadMarkdown('load-balancer/intro.md', 'Load Balancer - 제품 소개', '/load-balancer/intro')">제품 소개</div>
+                <div class="submenu-item" onclick="loadMarkdown('load-balancer/test.md', 'Load Balancer - 테스트', '/load-balancer/test')">테스트</div>
+            </div>
+        </div>
+
     </div>
 
     <div id="content">
