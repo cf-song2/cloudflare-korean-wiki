@@ -61,7 +61,8 @@ function goHome() {
 
     window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
     document.title = "Cloudflare Wiki";
-    window.location.href = "/";
+    window.location.reload();
+
 }
 
 document.addEventListener("DOMContentLoaded", loadPageFromURL);
