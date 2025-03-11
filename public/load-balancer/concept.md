@@ -21,7 +21,7 @@
 | Endpoint | - 각각의 리퀘스트에 대해 응답할 엔드포인트 (서버 등) 입니다. |
 | LB | - 트래픽을 어느 풀로 보낼지 결정하는 컴포넌트입니다. |
 
-![How lb works](../assets/img/lb.png)
+![How lb works](../assets/img/lb-new.png)
 
 ## Monitors and health checks
 - [여기](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/)를 참조합니다.
