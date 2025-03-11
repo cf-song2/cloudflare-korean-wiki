@@ -23,8 +23,11 @@ function toggleSubmenu(id) {
 }
 
 function loadMarkdown(file, title, url) {
-    fetch(`/${file}`)
-        .then(response => response.text())
+    fetch(file)
+        .then(response => {
+            if (!response.ok) throw new Error("Markdown 파일을 찾을 수 없음");
+            return response.text();
+        })
         .then(markdown => {
             document.getElementById("content").innerHTML = md.render(markdown);
             window.history.pushState({ path: url }, title, url);
@@ -36,9 +39,12 @@ function loadMarkdown(file, title, url) {
         });
 }
 
+
 window.addEventListener("popstate", function (event) {
-    if (event.state) {
+    if (event.state && event.state.path) {
         loadMarkdown(event.state.path, document.title, event.state.path);
+    } else {
+        goHome();
     }
 });
 
@@ -47,9 +53,9 @@ function loadPageFromURL() {
     
     if (path === "/") {
         goHome();
-    } else if (path.startsWith("/stream/")) {
-        let file = `.${path}.md`;
-        loadMarkdown(file, "Stream - Cloudflare Wiki", path);
+    } else {
+        let file = `${path}.md`.replace("//", "/");
+        loadMarkdown(file, "Cloudflare Wiki", path);
     }
 }
 
@@ -58,9 +64,9 @@ function goHome() {
         <h2>Cloudflare 소개 페이지에 오신 것을 환영합니다!</h2>
         <p>이 페이지는 현재 Cloudflare의 Pages로 서빙됩니다...</p>
     `;
+
     window.history.pushState({ path: "/" }, "Cloudflare Wiki", "/");
     document.title = "Cloudflare Wiki";
-    window.location.href = "/";
 }
 
 document.addEventListener("DOMContentLoaded", loadPageFromURL);
