@@ -1,10 +1,5 @@
 /assets/*  /assets/:splat  200
-/stream/assets/*  /assets/:splat  200
-/dns/assets/*  /assets/:splat  200
-/load-balancer/assets/*  /assets/:splat  200
-
 /stream/*  /index.html  200
 /dns/*  /index.html  200
 /load-balancer/*  /index.html  200
-
 /*  /index.html  200
