@@ -11,7 +11,9 @@ const md = window.markdownit({
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);
-    let parentItem = submenu.previousElementSibling;
+    let parentItem = submenu ? submenu.previousElementSibling : null;
+
+    if (!submenu || !parentItem) return;
 
     if (submenu.style.display === "block") {
         submenu.style.display = "none";
@@ -42,7 +44,9 @@ function loadMarkdown(file, title, url) {
 }
 
 function loadHTML(file, title, url) {
-    fetch(file)
+    let fullPath = `/${file}`.replace("//", "/");
+
+    fetch(fullPath)
         .then(response => {
             if (!response.ok) throw new Error("HTML 파일을 찾을 수 없음");
             return response.text();
@@ -59,19 +63,27 @@ function loadHTML(file, title, url) {
 }
 
 window.addEventListener("popstate", function (event) {
-    if (event.state && event.state.path !== "/") {  
+    if (!event.state || event.state.path === "/") {  
+        goHome();
+        return;
+    }
+
+    if (event.state.path.includes(".html")) {
+        loadHTML(event.state.path, document.title, event.state.path);
+    } else {
         loadMarkdown(event.state.path, document.title, event.state.path);
-    } 
+    }
 });
 
 function loadPageFromURL() {
     let path = window.location.pathname;
-    
+
     if (path === "/") {
         goHome();
+    } else if (path.endsWith(".html")) {
+        loadHTML(path, "Cloudflare Wiki", path);
     } else {
-        let file = `${path}.md`.replace("//", "/");
-        loadMarkdown(file, "Cloudflare Wiki", path);
+        loadMarkdown(`${path}.md`, "Cloudflare Wiki", path);
     }
 }
 

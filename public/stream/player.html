@@ -8,34 +8,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.ui.min.js"></script>
 </head>
 <body>
-    <h2>Cloudflare Stream 비디오 플레이어</h2>
+    <div id="content">
+        <h2>Cloudflare Stream 비디오 플레이어</h2>
 
-    <div class="video-container">
-        <!-- 비디오 플레이어 -->
-        <div id="video-player">
-            <video id="video" width="640" height="360" controls></video>
-        </div>
+        <div class="video-container">
+            <!-- 비디오 플레이어 -->
+            <div id="video-player">
+                <video id="video" width="720" height="400" controls></video>
+            </div>
 
-        <!-- 비디오 리스트 -->
-        <div class="video-list">
-            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/89fa3d24522da461e084f3ddc7a1570f/manifest/video.m3u8')">
-                🎬 영상 1 - Cloudflare Stream 테스트 (HLS)
-            </div>
-            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/1abf85ba97e3d1322ed6a1939d846cb2/manifest/video.m3u8')">
-                🎥 영상 2 - Cloudflare Stream 테스트 (HLS)
-            </div>
-            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/e5431f8bdcb9af3ce41fe259d84837c2/manifest/video.mpd')">
-                📡 영상 3 - Cloudflare Stream 테스트 (DASH)
-            </div>
-            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/b7f8d851337dfdc62f5940df40264176/manifest/video.mpd')">
-                🚀 영상 4 - Cloudflare Stream 테스트 (DASH)
+            <!-- 비디오 리스트 -->
+            <div class="video-list">
+                <button class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/89fa3d24522da461e084f3ddc7a1570f/manifest/video.m3u8')">
+                    🎬 영상 1 - Cloudflare Stream 테스트 (HLS)
+                </button>
+                <button class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/1abf85ba97e3d1322ed6a1939d846cb2/manifest/video.m3u8')">
+                    🎥 영상 2 - Cloudflare Stream 테스트 (HLS)
+                </button>
+                <button class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/e5431f8bdcb9af3ce41fe259d84837c2/manifest/video.mpd')">
+                    🎼 영상 3 - Cloudflare Stream 테스트 (DASH)
+                </button>
+                <button class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/b7f8d851337dfdc62f5940df40264176/manifest/video.mpd')">
+                    🚀 영상 4 - Cloudflare Stream 테스트 (DASH)
+                </button>
             </div>
         </div>
     </div>
 
     <script>
         let player;
-        
+
         async function initPlayer() {
             const video = document.getElementById('video');
             player = new shaka.Player(video);
