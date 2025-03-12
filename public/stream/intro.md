@@ -59,8 +59,26 @@
 | [MP4 다운로드](https://developers.cloudflare.com/stream/viewing-videos/download-videos/) | - 오프라인 재생 용도의 MP4 다운로드 기능 활성화 가능 <br>- /download 엔드포인트에 POST 요청을 보내 다운로드를 활성화하고, GET 요청을 보내 다운로드 링크를 가져옴 <br>- 해당 URL에서 다운로드 |
 
 ### 보안 관련 옵션: Signed URLs / Tokens
-- 
+- 기본 Stream에 업도르 된 비디오는 비디오 ID만 있다면 누구나 시청할 수 있으므로, 특정 사용자에게만 접근 권한을 부여하는 경우 Singed URL 기능을 사용할 수 있습니다.
+- 비디오를 Signed URL이 필요하도록 설정하면 ("requireSignedURLs": true) Signed URL 토큰이 있어야 비디오를 시청/다운로드 할 수 있습니다.
 
+- Singed Token을 생성하기 위해 다음 방법을 사용할 수 있습니다.
+1. /token 엔드포인트를 사용하여 서명된 토큰 생성
+  + only for test purpose (하루 10,000개 제한)
+2. 오픈소스 라이브러리를 사용해 직접 생성
+  + 사용자가 많은 경우 /token 엔드포인트를 매번 호출할 수 없음
+  + 오픈소스 라이브러리를 사용해 직접 토큰을 생성할 수 있음
+  + 이 경우 /stream/key를 호출해 pem/jwk를 얻어, 이를 이용해 토큰을 생성할 수 있음 (키는 1,000개까지 사용 가능)
+
+- Supported Restrictions
+
+![security](../assets/img/stream-security.png)
+
+- 추가 사항
+  + Hotlinking Protection (Allowed Origins 설정)
+     - 기본 설정으로는 모든 도메인에서 영상을 임베드할 수 있으므로, 필요에 따라 특정 도메인에서만 임베드가 가능하도록 할 수 있다.
+     - 비디오 옆에 "허용할 원본 도메인 입력 (Enter allowed origin domains separated by commas)" 라벨이 있는 텍스트 박스 이용
+     - 이를 통해 어떤 도메인이 이 영상을 호출, 임베드할지 제어할 수 있다.
 
 <br>
 
