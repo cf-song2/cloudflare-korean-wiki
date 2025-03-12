@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare Stream Player</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.ui.min.js"></script>
+</head>
+<body>
+    <h2>Cloudflare Stream 비디오 플레이어</h2>
+
+    <div class="video-container">
+        <!-- 비디오 플레이어 -->
+        <div id="video-player">
+            <video id="video" width="640" height="360" controls></video>
+        </div>
+
+        <!-- 비디오 리스트 -->
+        <div class="video-list">
+            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/89fa3d24522da461e084f3ddc7a1570f/manifest/video.m3u8')">
+            </div>
+            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/1abf85ba97e3d1322ed6a1939d846cb2/manifest/video.m3u8')">
+            </div>
+            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/e5431f8bdcb9af3ce41fe259d84837c2/manifest/video.mpd')">
+            </div>
+            <div class="video-item" onclick="changeVideo('https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/b7f8d851337dfdc62f5940df40264176/manifest/video.mpd')">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let player;
+        
+        async function initPlayer() {
+            const video = document.getElementById('video');
+            player = new shaka.Player(video);
+
+            if (!shaka.Player.isBrowserSupported()) {
+                console.error("Shaka Player를 지원하지 않는 브라우저입니다.");
+                return;
+            }
+
+            try {
+                await player.load("https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/b7f8d851337dfdc62f5940df40264176/manifest/video.mpd");
+                console.log("비디오 로드 성공!");
+            } catch (e) {
+                console.error("비디오 로드 실패:", e);
+            }
+        }
+
+        function changeVideo(url) {
+            if (player) {
+                player.load(url).then(() => {
+                    console.log("새로운 비디오 로드됨:", url);
+                }).catch((error) => {
+                    console.error("비디오 변경 실패:", error);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initPlayer);
+    </script>
+</body>
+</html>
