@@ -52,7 +52,16 @@ function loadHTML(file, title, url) {
             return response.text();
         })
         .then(html => {
-            document.getElementById("content").innerHTML = html;
+            let contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = html;
+
+            let scripts = contentDiv.getElementsByTagName("script");
+            for (let script of scripts) {
+                let newScript = document.createElement("script");
+                newScript.text = script.text;
+                document.body.appendChild(newScript);
+            }
+
             window.history.pushState({ path: url }, title, url);
             document.title = title;
         })
@@ -61,6 +70,7 @@ function loadHTML(file, title, url) {
             console.error("Error loading HTML:", error);
         });
 }
+
 
 window.addEventListener("popstate", function (event) {
     if (!event.state || event.state.path === "/") {  
