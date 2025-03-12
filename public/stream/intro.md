@@ -7,6 +7,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[How stream works?](#how-stream-works)
 
 &nbsp;&nbsp;&nbsp;&nbsp;[비디오 재생 (VOD)](#비디오-재생-vod)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[보안 관련 옵션: Signed URLs / Tokens](#보안-관련-옵션-signed-urls-tokens)
+
+&nbsp;&nbsp;&nbsp;&nbsp;[비디오 편집](#비디오-편집)
+
 <br>
 
 # Stream
@@ -59,8 +64,8 @@
 | [MP4 다운로드](https://developers.cloudflare.com/stream/viewing-videos/download-videos/) | - 오프라인 재생 용도의 MP4 다운로드 기능 활성화 가능 <br>- /download 엔드포인트에 POST 요청을 보내 다운로드를 활성화하고, GET 요청을 보내 다운로드 링크를 가져옴 <br>- 해당 URL에서 다운로드 |
 
 ### 보안 관련 옵션: Signed URLs / Tokens
-- 기본 Stream에 업도르 된 비디오는 비디오 ID만 있다면 누구나 시청할 수 있으므로, 특정 사용자에게만 접근 권한을 부여하는 경우 Singed URL 기능을 사용할 수 있습니다.
-- 비디오를 Signed URL이 필요하도록 설정하면 ("requireSignedURLs": true) Signed URL 토큰이 있어야 비디오를 시청/다운로드 할 수 있습니다.
+기본 Stream에 업도르 된 비디오는 비디오 ID만 있다면 누구나 시청할 수 있으므로, 특정 사용자에게만 접근 권한을 부여하는 경우 Singed URL 기능을 사용할 수 있습니다.
+비디오를 Signed URL이 필요하도록 설정하면 ("requireSignedURLs": true) Signed URL 토큰이 있어야 비디오를 시청/다운로드 할 수 있습니다.
 
 - Singed Token을 생성하기 위해 다음 방법을 사용할 수 있습니다.
 1. /token 엔드포인트를 사용하여 서명된 토큰 생성
@@ -70,7 +75,7 @@
   + 오픈소스 라이브러리를 사용해 직접 토큰을 생성할 수 있음
   + 이 경우 /stream/key를 호출해 pem/jwk를 얻어, 이를 이용해 토큰을 생성할 수 있음 (키는 1,000개까지 사용 가능)
 
-- Supported Restrictions
+Supported Restrictions
 
 ![security](../assets/img/stream-security.png)
 
@@ -82,16 +87,27 @@
 
 <br>
 
-## 비디오 변환
+## 비디오 편집
 
-<br>
-
-## 비디오 수정
+| 기능  | 동작 |
+|------|----|
+| [오디오 트랙 추가하기](https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/) | - 비디오를 업로드한 후 추가 오디오 트랙을 첨부할 수 있다. 다음 API 사용 <br>- https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/copy <br>- 오디오 추가, 목록 조회, 수정, 삭제 가능 |
+| [캡션 추가하기](https://developers.cloudflare.com/stream/edit-videos/adding-captions/) | - 자막을 추가하는 방법은 (1) AI 생성 (2) 자막 파일 업로드 두 가지가 있다. <br>- <LANGUAGE_TAG> 값은 BCP 47 형식을 따라야한다. <br>(1) AI 생성의 경우, STT 기술을 사용, 생성 가능한 언어 목록 URL을 참고 <br> (2) 직접 작성한 WebVTT 자막 파일을 업로드 가능, 다른 포맷은 변환이 필요하며 최대 파일 크기는 10M <br>- 주의: 비디오 업로드 선행 필요, WebVTT 포맷만 지원, 자막 언어 중복 불가, 최대 파일 크기 제한 <br>- AI 자동 생성 기능, 파일 업로드, 목록 조회, 다운로드, 삭제 가능 |
+| [워터마크 적용](https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/) | - Cloudflare Stream API를 사용하여 업로드된 비디오에 워터마크(Watermark) 를 추가할 수 있다. <br>- 주의: 워터마크 프로필 수정 불가, 적용된 워터마크 변경 불가, 최대 파일 크기 2MiB, Support PNG only <br>- 워터마크 프로필 생성, 비디오 업로드 시 적용, 워터마크 조회, 워터마크 삭제|
+| [플레이어 정보 추가](https://developers.cloudflare.com/stream/edit-videos/player-enhancements/) | - "publicDetails" 설정을 통해 동영상의 title, share_link, channel_link, logo를 추가, 관리할 수 있습니다. |
+| [비디오 클립](https://developers.cloudflare.com/stream/edit-videos/video-clipping/) | - 트리밍 기술로, 비디오의 시작/끝 지점을 조정해 특정 부분만 보이도록 하는 기능이다. <br>- 기존 비디오에서 원하는 시작/끝 구간을 지정해 짧은 비디오 생성 가능 |
 
 <br>
 
 ## 비디오 관리
+- 비디오 처리 완료 등에 대한 알림을 웹훅을 통해 수신 가능 (http, https 지원)합니다.
+- 자세한 내용은 [여기](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/)를 참조하세요.
 
 <br>
 
 ## 분석 도구
+
+| 기능  | 동작 |
+|------|----|
+| [GraphQL analytics API](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/) | - 실시간 비디오 및 업로드된 VOD 비디오에 대한 분석 데이터 제공 <br>- 한 번 요청에서 조회 가능 기간: 31일, 데이터 보관 기간: 90일| 
+| Stream Dashboard | - 실시간 비디오 및 업로드된 VOD 비디오에 대한 분석 데이터 제공 | 
