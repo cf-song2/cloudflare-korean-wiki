@@ -44,32 +44,34 @@ function loadMarkdown(file, title, url) {
 }
 
 function loadHTML(file, title, url) {
-    let fullPath = `/${file}`.replace("//", "/");
-
-    fetch(fullPath)
+    fetch(file)
         .then(response => {
             if (!response.ok) throw new Error("HTML 파일을 찾을 수 없음");
             return response.text();
         })
         .then(html => {
-            let contentDiv = document.getElementById("content");
-            contentDiv.innerHTML = html;
-
-            let scripts = contentDiv.getElementsByTagName("script");
-            for (let script of scripts) {
-                let newScript = document.createElement("script");
-                newScript.text = script.text;
-                document.body.appendChild(newScript);
-            }
-
+            document.getElementById("content").innerHTML = html;
             window.history.pushState({ path: url }, title, url);
             document.title = title;
+
+            const scripts = document.getElementById("content").querySelectorAll("script");
+            scripts.forEach(script => {
+                const newScript = document.createElement("script");
+                if (script.src) {
+                    newScript.src = script.src;
+                    newScript.async = true;
+                } else {
+                    newScript.textContent = script.textContent;
+                }
+                document.body.appendChild(newScript);
+            });
         })
         .catch(error => {
             document.getElementById("content").innerHTML = "<p>페이지를 불러오는 데 실패했습니다.</p>";
             console.error("Error loading HTML:", error);
         });
 }
+
 
 
 window.addEventListener("popstate", function (event) {
