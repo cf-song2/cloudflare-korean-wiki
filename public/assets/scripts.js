@@ -1,13 +1,15 @@
-const md = window.markdownit({
-    html: true,
-    linkify: true,
-    typographer: true,
-    breaks: true
-})
-.use(markdownitEmoji)   
-.use(markdownitSub)     
-.use(markdownitSup)     
-.use(markdownitFootnote);
+if (window.md === undefined) {
+    window.md = window.markdownit({
+        html: true,
+        linkify: true,
+        typographer: true,
+        breaks: true
+    })
+    .use(markdownitEmoji)   
+    .use(markdownitSub)     
+    .use(markdownitSup)     
+    .use(markdownitFootnote);
+}
 
 function toggleSubmenu(id) {
     let submenu = document.getElementById(id);
@@ -54,9 +56,12 @@ function loadHTML(file, title, url) {
             window.history.pushState({ path: url }, title, url);
             document.title = title;
 
+            document.querySelectorAll("script.dynamic-script").forEach(script => script.remove());
+
             const scripts = document.getElementById("content").querySelectorAll("script");
             scripts.forEach(script => {
                 const newScript = document.createElement("script");
+                newScript.classList.add("dynamic-script");
                 if (script.src) {
                     newScript.src = script.src;
                     newScript.async = true;
@@ -71,8 +76,6 @@ function loadHTML(file, title, url) {
             console.error("Error loading HTML:", error);
         });
 }
-
-
 
 window.addEventListener("popstate", function (event) {
     if (!event.state || event.state.path === "/") {  
