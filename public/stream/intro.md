@@ -53,11 +53,14 @@
 
 | 기능  | 동작 |
 |------|----|
-| [자체 플레이어 사용](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)  | - Stream은 HLS 및 DASH를 지원하는 모든 비디오 플레이어와 호환된다. <br>- 이 두 프로토콜은 스트리밍 미디어의 표준 형식으로 웹 브라우저, 모바일 운영 체제 및 미디어 스트리밍 장치 전반에서 지원된다.|
-|   |  |
-|   |  |
-|   |  |
-|   |  |
+| [자체 플레이어 사용](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)  | - Stream은 HLS 및 DASH를 지원하는 모든 비디오 플레이어와 호환된다. <br>- 이 두 프로토콜은 스트리밍 미디어의 표준 형식으로 웹 브라우저, 모바일 운영 체제 및 미디어 스트리밍 장치 전반에서 지원된다. <br>- 웹: HLS / DASH를 지원하는 모든 비디오 플레이어와 동작할 수 있다 (Video.js, hls.js, dash.js, vidstack) <br>- iOS: AVPlayer 등 사용 가능 <br>- Android: ExoPlayer 등 사용 가능 |
+| [Stream 플레이어 사용](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) | - "iframe" 태그를 사용하여 플레이어 URL을 불러서 직접 사용 가능 |
+| [썸네일 생성](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/) | - 특정 시간의 썸네일을 실시간으로 생성 가능 (iframe, API 이용) <br>- GIF 생성 지원|
+| [MP4 다운로드](https://developers.cloudflare.com/stream/viewing-videos/download-videos/) | - 오프라인 재생 용도의 MP4 다운로드 기능 활성화 가능 <br>- /download 엔드포인트에 POST 요청을 보내 다운로드를 활성화하고, GET 요청을 보내 다운로드 링크를 가져옴 <br>- 해당 URL에서 다운로드 |
+
+### 보안 관련 옵션: Signed URLs / Tokens
+- 
+
 
 <br>
 
