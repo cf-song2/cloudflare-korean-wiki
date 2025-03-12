@@ -41,6 +41,22 @@ function loadMarkdown(file, title, url) {
         });
 }
 
+function loadHTML(file, title, url) {
+    fetch(file)
+        .then(response => {
+            if (!response.ok) throw new Error("HTML 파일을 찾을 수 없음");
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById("content").innerHTML = html;
+            window.history.pushState({ path: url }, title, url);
+            document.title = title;
+        })
+        .catch(error => {
+            document.getElementById("content").innerHTML = "<p>페이지를 불러오는 데 실패했습니다.</p>";
+            console.error("Error loading HTML:", error);
+        });
+}
 
 window.addEventListener("popstate", function (event) {
     if (event.state && event.state.path !== "/") {  
