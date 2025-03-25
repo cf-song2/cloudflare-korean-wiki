@@ -54,7 +54,16 @@
             </div>
         </div>
 
-    </div>
+        <div class="menu-item" onclick="toggleMenu('application-security')">Application Security</div>
+        <div class="submenu">
+            <div class="submenu-item has-submenu" onclick="toggleSubmenu('api-shield')">
+                API Shield <span class="arrow">></span>
+            </div>
+            <div id="api-shield" class="nested-submenu">
+                <div class="submenu-item" onclick="loadMarkdown('api-shield/intro.md', 'API Shield - 소개', '/api-shield/intro')">소개</div>
+                <div class="submenu-item" onclick="loadMarkdown('api-shield/security.md', 'API Shield - Security', '/api-shield/security')">Security</div>
+            </div>
+        </div>
 
     <div id="content">
         <h2>Cloudflare 소개 페이지에 오신 것을 환영합니다!</h2>
