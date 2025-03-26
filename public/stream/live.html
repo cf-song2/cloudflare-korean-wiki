@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream Demo</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <h1>🎥 Cloudflare Live Stream</h1>
+
+    <section>
+        <h2>1. Cloudflare Player (iframe)</h2>
+        <div style="position: relative; padding-top: 56.25%;">
+            <iframe
+              src="https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/7d6636cf2506c3741e452dbbc515dd7c/iframe"
+              style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+              allowfullscreen="true"
+            ></iframe>
+          </div>
+    </section>
+
+    <section>
+        <h2>2. HLS (MSE 기반 재생)</h2>
+        <video id="hls-video" controls style="width: 100%; max-width: 800px;"></video>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        const video = document.getElementById('hls-video');
+        const hls = new Hls();
+        const hlsUrl = 'https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/7d6636cf2506c3741e452dbbc515dd7c/manifest/video.m3u8';
+
+        if (Hls.isSupported()) {
+            hls.loadSource(hlsUrl);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = hlsUrl;
+            video.addEventListener('loadedmetadata', function () {
+                video.play();
+            });
+        } else {
+            alert('이 브라우저는 HLS를 지원하지 않습니다.');
+        }
+    </script>
+</body>
+</html>
