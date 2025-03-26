@@ -8,27 +8,21 @@
 </head>
 <body>
   <div id="content">
-    <h1>🎥 Cloudflare Live Stream</h1>
-
-    <div class="video-container">
-      <!-- Cloudflare Player (iframe) -->
-      <div id="video-player">
-        <h2>1. Cloudflare Player (iframe)</h2>
-        <div style="position: relative; padding-top: 56.25%;">
-          <iframe
-            src="https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/7d6636cf2506c3741e452dbbc515dd7c/iframe"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-            allowfullscreen="true"
-          ></iframe>
-        </div>
+    <div class="video-section">
+      <h2>1. Cloudflare Player (iframe)</h2>
+      <div class="responsive-iframe">
+        <iframe
+          src="https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/7d6636cf2506c3741e452dbbc515dd7c/iframe"
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowfullscreen="true"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+        ></iframe>
       </div>
+    </div>
 
-      <!-- HLS (video.js or native) -->
-      <div id="video-player">
-        <h2>2. HLS (MSE 기반 재생)</h2>
-        <video id="hls-video" controls style="width: 100%; border-radius: 8px; background: black;"></video>
-      </div>
+    <div class="video-section">
+      <h2>2. HLS (MSE 기반 재생)</h2>
+      <video id="hls-video" controls></video>
     </div>
   </div>
 
@@ -36,6 +30,7 @@
   <script>
     const video = document.getElementById('hls-video');
     const hls = new Hls();
+
     const hlsUrl = 'https://customer-jn4ay3ni5ssxnwyk.cloudflarestream.com/7d6636cf2506c3741e452dbbc515dd7c/manifest/video.m3u8';
 
     if (Hls.isSupported()) {
